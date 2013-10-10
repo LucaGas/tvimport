@@ -194,6 +194,7 @@ class TVObject():
         self.ep_showname, self.ep_number, self.ep_season, self.name = self.tv_parser(self.clean())
         # If the the regexp works
         if self.ep_showname and self.ep_number and self.ep_season:
+           logger.info("Regexp succeeded for %s Season %s Episode %s" % (self.ep_showname,self.ep_season,self.ep_number))
            self.dest_dir_episode=dst_dir+"/"+self.ep_showname+"/"+"Season "+str(self.ep_season)
            self.ep_title=self.get_title(self.ep_showname,self.ep_number,self.ep_season)        
            self.final_name=self.name.replace('^s^e','S'+str(self.ep_season).zfill(2)+'E'+str(self.ep_number).zfill(2)).replace(' ','.')
