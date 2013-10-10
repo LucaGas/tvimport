@@ -3,6 +3,7 @@ episode). With this information the daemon queries the tvdb database for the tit
 
 ## Requirement
 An inotify enabled kernel ( I guess this means linux only)
+
 Python modules:
 * tvdb_api
 * pyinotify
@@ -14,7 +15,8 @@ Python modules:
 
 ``` tvimport start source_dir dest_dir```
 
-source_dir: the directory where you will move the files that need to be renamed
-dest_dir: the directory where you want to move the files to. For example if dest_dir is /media/Downloads the final destination will be /media/Downloads/Lost/Season 1/Lost.S01E01.Pilot.mkv
+**source_dir**: the directory where you will move the files that need to be renamed
+
+**dest_dir**: the directory where you want to move the files to. For example if dest_dir is /media/Downloads the final destination will be /media/Downloads/Lost/Season 1/Lost.S01E01.Pilot.mkv
 
    
