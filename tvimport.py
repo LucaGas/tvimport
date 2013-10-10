@@ -14,15 +14,20 @@ except:
     sys.exit("Aborted: You need the python module called tvdb_api to run this daemon\n")
 
 logger = logging.getLogger("TVimportLog")
+# Logging
 if DEBUG == True:
     logger.setLevel(logging.DEBUG)
 else:
     logger.setLevel(logging.INFO)
+
+if not os.path.exists (os.path.expanduser("~")+"/.tvimport"):
+    os.makedirs (os.path.expanduser("~")+"/.tvimport")
+
 formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
-handler = logging.FileHandler("/var/log/tvimport/tvimport.log")
+handler = logging.FileHandler(os.path.expanduser("~")+"/.tvimport/tvimport.log")
 handler.setFormatter(formatter)
 logger.addHandler(handler)
-
+# End Logging
 
 
 class Daemon():
@@ -31,7 +36,7 @@ class Daemon():
 
         Usage: subclass the Daemon class and override the run() method
         """
-        def __init__(self, pidfile, stdin='/dev/null', stdout='/dev/null', stderr='/dev/null'):
+        def __init__(self, pidfile, stdin='/dev/null', stdout='/dev/stdout', stderr='/dev/stderr'):
                 self.stdin = stdin
                 self.stdout = stdout
                 self.stderr = stderr
