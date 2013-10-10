@@ -20,11 +20,11 @@ if DEBUG == True:
 else:
     logger.setLevel(logging.INFO)
 
-if not os.path.exists (os.path.expanduser("~")+"/.tvimport"):
-    os.makedirs (os.path.expanduser("~")+"/.tvimport")
+if not os.path.exists (os.path.expanduser("~/.tvimport")):
+    os.makedirs (os.path.expanduser("~/.tvimport"))
 
 formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
-handler = logging.FileHandler(os.path.expanduser("~")+"/.tvimport/tvimport.log")
+handler = logging.FileHandler(os.path.expanduser("~/.tvimport/tvimport.log"))
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 # End Logging
@@ -317,7 +317,7 @@ class EventHandler(pyinotify.ProcessEvent):
                     self.move(file,os.path.join(root,file))
 
 def main():       
-    daemon = Daemon(os.path.expanduser('~/.xbmcimport.pid'))
+    daemon = Daemon(os.path.expanduser("~/.tvimport/tvimport.pid"))
     
     def print_usage():
         print "usage: %s start|restart source destination" % sys.argv[0]
